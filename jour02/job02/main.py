@@ -1,8 +1,7 @@
-i=-1
+i=-2
 
 nombre=20
 
 while i < nombre:
-    i+=1
+    i+=2
     print(i)
-
