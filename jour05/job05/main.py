@@ -1,41 +1,35 @@
-# def uncaesarize_letter(letter):
-#     if 'A' <= letter.upper() <= 'Z':
-#         return chr(ord(letter) - 3)
-#     else:
-#         return letter
+def decaler_message(message="", decalage=0):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    if not message or decalage == 0:
+        raise ValueError("")
 
-# def caesarize_letter(letter):
-#     if 'A' <= letter.upper() <= 'Z':
-#         return chr(ord(letter)  3)
-#     else:
-#         return letter
+    print(f"-> Votre message non chiffré est :\n=> {message}\n")
 
-# def caesarize(text):
-#     return ''.join([caesarize_letter(letter) for letter in text])
+    message_decale = ''
+    for lettre in message:
+        if lettre.lower() in alphabet:
+            index = (alphabet.index(lettre.lower()) + decalage) % len(alphabet)
+            if lettre.isupper():
+                message_decale += alphabet[index].upper()
+            else:
+                message_decale += alphabet[index]
+        else:
+            message_decale += lettre
 
-# def uncaesarize(text):
-#     return ''.join([uncaesarize_letter(letter) for letter in text])
+    print(f"-> Votre message chiffré est :\n=> {message_decale}")
+    return message_decale
 
-# print(caesarize('AOUCOU JULIE'))
+message_original = "Ave Cesar !"
+decalage = 3
+resultat = decaler_message(message_original, decalage)
+   
 
-def cesar_lettre(lettre):
-    if 'A' <= lettre.upper() <= 'Z':
-        start = ord('a') if lettre.islower() else ord('A')
-        return chr((ord(lettre) - start + 3) % 26 + start)
-    else:
-        return lettre
 
-def lecesar_lettre(lettre):
-    if 'A' <= lettre.upper() <= 'Z':
-        start = ord('a') if lettre.islower() else ord('A')
-        return chr((ord(lettre) - start - 3) % 26 + start)
-    else:
-        return lettre
 
-def cesar(text):
-    return ''.join([cesar_lettre(lettre) for lettre in text])
 
-def lecesar(text):
-    return ''.join([lecesar_lettre(lettre) for lettre in text])
+    
+   
 
-print(cesar('Message chiffrer de cesar'))
+
+
+
